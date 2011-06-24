@@ -1,0 +1,5 @@
+django-qsstats-magic >= 0.6
+dateutil==1.5
+django-chart-tools >= 0.2.1
+django >= 1.2
+django-admin-tools >= 0.4.0
