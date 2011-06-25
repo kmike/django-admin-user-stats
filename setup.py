@@ -13,7 +13,7 @@ setup(
     version = version,
     author = 'Mikhail Korobov',
     author_email = 'kmike84@gmail.com',
-    url = 'http://bitbucket.org/kmike/django-admin-user-stats/',
+    url = 'https://bitbucket.org/kmike/django-admin-user-stats/',
     description = 'django-admin-tools dashboard modules with user registration stats',
     long_description = open('README.rst').read(),
     license = 'MIT license',

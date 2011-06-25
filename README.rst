@@ -15,7 +15,7 @@ Make sure django-admin-tools >= 0.4.0 is installed and then
 ::
 
     pip install "django-qsstats-magic >= 0.6"
-    pip install "dateutil==1.5"
+    pip install "python-dateutil==1.5"
     pip install "django-chart-tools >= 0.2.1"
     pip install django-admin-user-stats
 
