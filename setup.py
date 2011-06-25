@@ -17,16 +17,9 @@ setup(
     description = 'django-admin-tools dashboard modules with user registration stats',
     long_description = open('README.rst').read(),
     license = 'MIT license',
-    requires = [
-        'django-admin-tools (>= 0.4.0)',
-        'django (>=1.2)',
-        'django-qsstats-magic (>= 0.6)',
-        'dateutil(>=1.4.1, < 2.0)',
-        'django-chart-tools (>= 0.2.1)',
-    ],
 
     packages=['admin_user_stats'],
-    package_data={'admin_user_stats': ['templates/admin_user_stats/*']},
+    package_data={'admin_user_stats': ['templates/admin_user_stats/modules/*']},
 
     classifiers=[
         'Development Status :: 4 - Beta',
