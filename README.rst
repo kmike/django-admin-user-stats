@@ -30,7 +30,7 @@ Import ``RegistrationCharts`` dashboard module::
 
 then and add it to dashboard's children::
 
-    self.children += RegistrationCharts()
+    self.children += [RegistrationCharts()]
 
 go to admin and enjoy the result_.
 
@@ -51,7 +51,7 @@ To enable, import it::
 
 and add to dashboard's children (or to modules.Group)::
 
-    self.children += RegistrationChart('New Users', interval='days', days=30)
+    self.children += [RegistrationChart('New Users', interval='days', days=30)]
 
 
 RegistrationCharts
@@ -64,7 +64,10 @@ per week and per month).
 get_registration_charts()
 -------------------------
 
-A function returning 3 default RegistrationChart instances.
+A function returning 3 default RegistrationChart instances::
+
+    from admin_user_stats.modules import get_registration_charts
+    self.children += get_registration_charts()
 
 
 Contributing
