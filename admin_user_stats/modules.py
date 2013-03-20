@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime, timedelta
+from datetime import timedelta
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+try:
+    from django.utils.timezone import now
+except ImportError:
+    from datetime import datetime
+    now = datetime.now
 
 from qsstats import QuerySetStats
 from admin_tools.dashboard import modules
@@ -42,7 +47,7 @@ class RegistrationChart(modules.DashboardModule):
     def get_registrations(self, interval, days):
         """ Returns an array with new users count per interval """
         stats = QuerySetStats(User.objects.filter(is_active=True), 'date_joined')
-        today = datetime.today()
+        today = now()
         begin = today - timedelta(days=days-1)
         return stats.time_series(begin, today+timedelta(days=1), interval)
 
