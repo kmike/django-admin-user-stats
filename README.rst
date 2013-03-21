@@ -72,7 +72,7 @@ BaseChart
 To build charts for other time-series data, inherit from BaseChart and set a few attributes::
 
     from admin_user_stats.base_modules import BaseChart
-    from widget.models import ActivityModel
+    from kitten.models import Activity
 
 
     class ActivityChart(BaseChart):
