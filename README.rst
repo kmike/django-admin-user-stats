@@ -61,14 +61,44 @@ Group subclass with 3 default children modules (new users per day,
 per week and per month).
 
 
-get_registration_charts()
--------------------------
+Advanced Usage
+=============
 
-A function returning 3 default RegistrationChart instances::
+New BaseChart(s) abstract modules are there for you to play with.  Want to track kitten activity?
 
-    from admin_user_stats.modules import get_registration_charts
-    self.children += get_registration_charts()
+BaseChart
+---------
 
+To build charts for other time-series data, inherit from BaseChart and set a few attributes::
+
+    from admin_user_stats.base_modules import BaseChart
+    from widget.models import ActivityModel
+
+
+    class ActivityChart(BaseChart):
+        """
+        Dashboard module with Activity charts.
+        """
+        title = _('How Active were the kittens')
+        template = 'admin_user_stats/modules/chart.html'
+        chart_size = "580x100"
+        days = None
+        interval = 'days'
+        queryset = Activity.objects.filter(kitten=True).exclude(active=None)
+        date_field = 'activity_date'
+
+BaseCharts
+---------
+
+To collect those charts in to the normal Day,Week,Month tabs::
+
+    from admin_user_stats.base_modules import BaseChart
+
+
+    class ApplicationCharts(BaseCharts):
+        """ Group module with 3 default registration charts """
+        title = _('Kitten Activity')
+        chart_model = ActivityChart
 
 Contributing
 ============
