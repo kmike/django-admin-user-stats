@@ -6,14 +6,14 @@ for cmd in 'egg_info', 'develop':
     if cmd in sys.argv:
         from setuptools import setup
 
-version='0.1.1'
+version='0.2'
 
 setup(
     name = 'django-admin-user-stats',
     version = version,
     author = 'Mikhail Korobov',
     author_email = 'kmike84@gmail.com',
-    url = 'https://bitbucket.org/kmike/django-admin-user-stats/',
+    url = 'https://github.com/kmike/django-admin-user-stats/',
     description = 'django-admin-tools dashboard modules with user registration stats',
     long_description = open('README.rst').read(),
     license = 'MIT license',
