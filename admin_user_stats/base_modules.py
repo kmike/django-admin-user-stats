@@ -35,7 +35,7 @@ class BaseChart(modules.DashboardModule):
         super(BaseChart, self).__init__(*args, **kwargs)
 
         if self.days is None:
-            self.days = {'days': self.values, 'weeks': self.values*7, 'months': self.values*30}[self.interval]
+            self.days = {'days': self.values, 'weeks': self.values*7, 'months': self.values*30, 'years': self.values*365}[self.interval]
 
         self.data = self.get_data(self.interval, self.days)
         self.prepare_template_data(self.data)
@@ -45,6 +45,7 @@ class BaseChart(modules.DashboardModule):
             'days': dt.day,
             'months': dt.strftime("%b"),
             'weeks': dt.strftime('%W'),
+            'years': dt.strftime('%Y'),
         }[self.interval]
 
     # @cached(60*5)
@@ -78,4 +79,5 @@ class BaseCharts(modules.Group):
             self.chart_model(_('By Day'), interval='days'),
             self.chart_model(_('By Week'), interval='weeks'),
             self.chart_model(_('By Month'), interval='months'),
+            self.chart_model(_('By Year'), interval='years'),
         ]
