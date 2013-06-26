@@ -86,6 +86,7 @@ To build charts for other time-series data, inherit from BaseChart and set a few
         interval = 'days'
         queryset = Activity.objects.filter(kitten=True).exclude(active=None)
         date_field = 'activity_date'
+        aggregate = Sum('amount')
 
 BaseCharts
 ---------

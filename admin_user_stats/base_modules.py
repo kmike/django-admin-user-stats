@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
+from django.db.models import Count
 from django.utils.translation import ugettext_lazy as _
 try:
     from django.utils.timezone import now
@@ -24,6 +25,7 @@ class BaseChart(modules.DashboardModule):
     interval = 'days'
     queryset = None
     date_field = 'date_joined'
+    aggregate = Count('id')
 
     def is_empty(self):
         return False
@@ -47,7 +49,7 @@ class BaseChart(modules.DashboardModule):
     # @cached(60*5)
     def get_data(self, interval, days):
         """ Returns an array with new users count per interval """
-        stats = QuerySetStats(self.queryset, self.date_field)
+        stats = QuerySetStats(self.queryset, self.date_field, aggregate = self.aggregate)
         today = now()
         begin = today - timedelta(days=days-1)
         return stats.time_series(begin, today+timedelta(days=1), interval)
