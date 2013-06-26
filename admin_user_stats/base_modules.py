@@ -22,7 +22,7 @@ class BaseChart(modules.DashboardModule):
     template = 'admin_user_stats/modules/chart.html'
     chart_size = "580x100"
     days = None
-    values = 30
+    values_count = 30
     interval = 'days'
     queryset = None
     date_field = 'date_joined'
@@ -35,7 +35,7 @@ class BaseChart(modules.DashboardModule):
         super(BaseChart, self).__init__(*args, **kwargs)
 
         if self.days is None:
-            self.days = {'days': self.values, 'weeks': self.values*7, 'months': self.values*30, 'years': self.values*365}[self.interval]
+            self.days = {'days': self.values_count, 'weeks': self.values_count*7, 'months': self.values_count*30, 'years': self.values_count*365}[self.interval]
 
         self.data = self.get_data(self.interval, self.days)
         self.prepare_template_data(self.data)
