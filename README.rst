@@ -83,9 +83,11 @@ To build charts for other time-series data, inherit from BaseChart and set a few
         template = 'admin_user_stats/modules/chart.html'
         chart_size = "580x100"
         days = None
+        values_count = 10 #use either days or values_count
         interval = 'days'
         queryset = Activity.objects.filter(kitten=True).exclude(active=None)
         date_field = 'activity_date'
+        aggregate = Sum('amount')
 
 BaseCharts
 ---------
